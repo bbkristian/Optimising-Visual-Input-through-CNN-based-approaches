@@ -23,6 +23,9 @@ We used oracle correlation methods to identify neurons with high information con
 3. Applying Isolation Forest for anomaly detection.
 4. Selecting neurons with high oracle correlations and variance (above the 60th and 50th percentiles, respectively).
 
+![alt text](https://github.com/bbkristian/Optimising-Visual-Input-through-CNN-based-approaches/blob/main/images/rastermaps.png)
+
+
 ### Convolutional Neural Network (CNN)
 
 Our CNN architecture consists of three core blocks followed by a neuron-specific readout layer:
@@ -38,12 +41,16 @@ Our CNN architecture consists of three core blocks followed by a neuron-specific
 
 Transforms extracted features into a scalar representing the average spike activity of a neuron using an affine transformation followed by the activation function $ELU(x) +1$
 
+![](https://github.com/bbkristian/Optimising-Visual-Input-through-CNN-based-approaches/blob/main/images/CNN%20architecture.png)
+
 ### Model Training
 
 We trained our CNN using the following metrics:
 
 - **Loss**: Monitored during training to ensure convergence.
 - **Validation Correlation**: Highest-performing neuron achieved a validation correlation of $62$%.
+
+![](https://github.com/bbkristian/Optimising-Visual-Input-through-CNN-based-approaches/blob/main/images/train_test_loss.png)
 
 ### Most Excitatory Input (MEI) Generation
 
@@ -67,6 +74,7 @@ return I_MEI
 ```
 
 This process involves gradient ascent steps combined with Fourier Transform smoothing and Gaussian blurring to refine the image.
+![](https://github.com/bbkristian/Optimising-Visual-Input-through-CNN-based-approaches/blob/main/images/generation.png)
 
 ### Results 
 - **High-Performing Neurons**: Selection based on oracle correlations and subsequent performance in the CNN.
@@ -74,6 +82,7 @@ This process involves gradient ascent steps combined with Fourier Transform smoo
 
 ### Gabor Comparison 
 Gabor filters, mathematical models mimicking visual cortex neuron responses, were compared to MEIs using metrics like luminance, contrast, and symmetry indices. Despite structural differences, both stimuli exhibited similar metric values, suggesting shared characteristics in driving neuronal responses.
+![](https://github.com/bbkristian/Optimising-Visual-Input-through-CNN-based-approaches/blob/main/images/gabors.png)
 
 ### Conclusions and Limitations
 Our analysis confirms that MEIs can elicit stronger neural responses than Gabor patches, aligning with findings by Walker et al. (2019). However, in vivo validation is necessary for further confirmation. Limitations include a small dataset and computational constraints leading to image resizing. Future research could expand to diverse cortical regions and multiple neuron predictions to enhance simulation sophistication.
